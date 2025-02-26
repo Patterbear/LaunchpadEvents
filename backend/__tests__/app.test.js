@@ -22,6 +22,8 @@ describe("GET /api/events", () => {
 
         for (event of events) {
           expect(event).toMatchObject({
+        for (event of events) {
+          expect(event).toMatchObject({
             title: expect.any(String),
             location: expect.any(String),
             image: expect.any(String),
@@ -29,6 +31,12 @@ describe("GET /api/events", () => {
             date: expect.any(String),
             time: expect.any(String),
           });
+
+          // checks date and time are valid
+          expect(new Date(event.date).getTime()).toBeGreaterThan(0);
+          expect(/^(?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d$/.test(event.time)).toBe(
+            true
+          );
 
           // checks date and time are valid
           expect(new Date(event.date).getTime()).toBeGreaterThan(0);
