@@ -9,11 +9,11 @@ if (!process.env.PGDATABASE && !process.env.DATABASE_URL) {
   throw new Error("PGDATABASE or DATABASE_URL not set");
 }
 
-const pgConfig = {};
+const config = {};
 
 if (ENV === "production") {
-  pgConfig.connectionString = process.env.DATABASE_URL;
-  pgConfig.max = 2;
+  config.connectionString = process.env.DATABASE_URL;
+  config.max = 2;
 }
 
-module.exports = new Pool(pgConfig);
+module.exports = new Pool(config);
