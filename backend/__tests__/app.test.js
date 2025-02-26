@@ -22,6 +22,8 @@ describe("GET /api/events", () => {
 
         for (event of events) {
           expect(event).toMatchObject({
+        for (event of events) {
+          expect(event).toMatchObject({
             title: expect.any(String),
             location: expect.any(String),
             image: expect.any(String),
