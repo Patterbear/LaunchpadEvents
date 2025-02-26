@@ -15,4 +15,20 @@ module.exports = [
     date: "2025-04-29",
     time: "10:00:00"
   },
+  {
+    title: "Finedon Film Festival",
+    location: "Finedon",
+    image: "https://i.postimg.cc/Z5rZ8QbV/film.jpg",
+    description: "A festival celebrating film at Finedon cinema, with free refreshments and 20 classic movies.",
+    date: "2025-05-01",
+    time: "18:00:00"
+  },
+  {
+    title: "Kettering Christmas Market",
+    location: "Kettering",
+    image: "https://i.postimg.cc/bJ5Kc0YZ/christmas.jpg",
+    description: "Kettering's huge annual Christmas market.",
+    date: "2025-12-25",
+    time: "10:00:00"
+  }
 ];
