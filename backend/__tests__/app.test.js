@@ -35,6 +35,12 @@ describe("GET /api/events", () => {
           expect(/^(?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d$/.test(event.time)).toBe(
             true
           );
+
+          // checks date and time are valid
+          expect(new Date(event.date).getTime()).toBeGreaterThan(0);
+          expect(/^(?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d$/.test(event.time)).toBe(
+            true
+          );
         }
       });
   });
@@ -173,6 +179,6 @@ describe("DELETE /api/events/:event_id", () => {
       .expect(404)
       .then((response) => {
         expect(response.body.msg).toBe("not found");
-      });
+    });
   });
 });
