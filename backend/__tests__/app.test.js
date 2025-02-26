@@ -109,7 +109,7 @@ describe("POST /api/events", () => {
         });
       });
   });
-  test("new article is added to the articles table", () => {
+  test("new event is added to the events table", () => {
     const newEvent = {
       title: "Test Event",
       location: "Teston",
@@ -173,6 +173,63 @@ describe("DELETE /api/events/:event_id", () => {
       .expect(404)
       .then((response) => {
         expect(response.body.msg).toBe("not found");
-    });
+      });
+  });
+});
+
+describe("PATCH /api/events/:event_id", () => {
+  test("responds with updated event object", () => {
+    const eventUpdate = {
+      location: "Kettering",
+      title: "The Kettering Pub Crawl",
+    };
+
+    return request(app)
+      .patch("/api/events/1")
+      .send(eventUpdate)
+      .expect(200)
+      .then((response) => {
+        const responseEvent = response.body.event;
+        expect(responseEvent).toEqual({
+          event_id: 1,
+          title: "The Kettering Pub Crawl",
+          location: "Kettering",
+          image: expect.any(String),
+          description: expect.any(String),
+          date: expect.any(String),
+          time: expect.any(String),
+        });
+      });
+  });
+  test("event in database is updated", () => {
+    const eventUpdate = {
+      location: "Kettering",
+      title: "The Kettering Pub Crawl",
+      description: "A pub crawl across all the pubs in Kettering!",
+    };
+
+    return request(app)
+      .patch("/api/events/1")
+      .send(eventUpdate)
+      .set("Accept", "application/json")
+      .expect(200)
+      .then(() => {
+        return request(app)
+          .get("/api/events/1")
+          .expect(200)
+          .then((response) => {
+            const responseEvent = response.body.event;
+
+            expect(responseEvent).toMatchObject({
+              event_id: 1,
+              title: "The Kettering Pub Crawl",
+              location: "Kettering",
+              image: expect.any(String),
+              description: "A pub crawl across all the pubs in Kettering!",
+              date: expect.any(String),
+              time: expect.any(String),
+            });
+          });
+      });
   });
 });

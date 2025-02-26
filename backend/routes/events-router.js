@@ -3,6 +3,7 @@ const {
   getEventById,
   postEvent,
   deleteEventById,
+  patchEventById,
 } = require("../controllers/events.controllers");
 
 const eventsRouter = require("express").Router();
@@ -23,6 +24,9 @@ eventsRouter
   })
   .delete((req, res, next) => {
     deleteEventById(req, res, next);
+  })
+  .patch((req, res, next) => {
+    patchEventById(req, res, next);
   });
 
 module.exports = eventsRouter;

@@ -59,3 +59,26 @@ exports.removeEventById = (event_id) => {
     return result.rows[0];
   });
 };
+
+exports.updateEventById = (event_id, eventUpdate) => {
+  const fields = Object.keys(eventUpdate);
+  const values = Object.values(eventUpdate);
+
+  const setClause = fields
+    .map((field, index) => `${field} = $${index + 1}`)
+    .join(", ");
+
+  const query = `
+    UPDATE events
+    SET ${setClause}
+    WHERE event_id = $${fields.length + 1}
+    RETURNING *;
+  `;
+
+  return db.query(query, [...values, event_id]).then((result) => {
+    if (result.rows.length === 0) {
+      return Promise.reject({ status: 404, msg: "not found" });
+    }
+    return result.rows[0];
+  });
+};
