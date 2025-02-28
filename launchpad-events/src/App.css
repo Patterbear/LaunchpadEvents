@@ -4,6 +4,10 @@
   text-align: center;
 }
 
+body {
+  padding-top: 10%;
+}
+
 .event-card {
   display: flex;
   flex-direction: column;
@@ -75,13 +79,26 @@
 
 .header {
   display: flex;
-  justify-content: center;
-  padding: 0px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 10px 20px;
   background-color: #fff;
-  max-width: 30%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .header-banner {
-  max-width: 100%;
+  max-width: 30%;
   height: auto;
+  display: block;
+  align-self: flex-start;
+}
+
+.event-card:hover .event-title {
+  color: black;
 }
