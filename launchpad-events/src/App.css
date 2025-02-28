@@ -5,7 +5,13 @@
 }
 
 body {
-  padding-top: 4rem;
+  margin-top: 4rem;
+}
+
+@media (max-width: 480px) {
+  body {
+    margin-top: 12rem;
+  }
 }
 
 .event-card {
@@ -63,6 +69,7 @@ body {
 
 .header {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   padding: 10px 20px;
@@ -73,17 +80,23 @@ body {
   width: 100%;
   z-index: 1000;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  gap: 10px;
 }
 
 .header-banner {
   height: 5rem;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 .header-search {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
-  margin-right: 3%;
+  flex: 1;
+  min-width: 200px;
+  justify-content: flex-end;
+  margin-right: 2rem;
 }
 
 .header-search input,
@@ -91,7 +104,10 @@ body {
 .header-search button {
   padding: 8px;
   font-size: 14px;
+  flex-grow: 1;
+  min-width: 120px;
 }
+
 
 
 .event-card:hover .event-title {

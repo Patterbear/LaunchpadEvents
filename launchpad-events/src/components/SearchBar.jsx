@@ -30,9 +30,11 @@ const Header = ({ onSearch }) => {
         />
         <select value={location} onChange={(e) => setLocation(e.target.value)}>
           <option value="All">All Locations</option>
-          <option value="London">London</option>
-          <option value="Manchester">Manchester</option>
-          {/* More locations dynamically */}
+          <option value="Burton Latimer">Burton Latimer</option>
+          <option value="Kettering">Kettering</option>
+          <option value="Finedon">Finedon</option>
+          <option value="Corby">Corby</option>
+          <option value="Leicester">Leicester</option>
         </select>
         <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
           <option value="soonest">Soonest</option>

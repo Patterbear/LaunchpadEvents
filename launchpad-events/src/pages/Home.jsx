@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchEvents } from "../../api";
 import EventList from "../components/EventList";
-import Header from "../components/Header";
 import SearchBar from "../components/SearchBar";
 
 const Home = () => {
@@ -15,6 +14,7 @@ const Home = () => {
         setEvents(data);
         setFilteredEvents(data);
         setLoading(false);
+        window.scrollTo(0, 0);
       })
       .catch((error) => {
         console.error("Error fetching events:", error);
