@@ -13,7 +13,6 @@ const EventCard = ({ event }) => {
           minute: "2-digit",
         })}
       </p>
-      <button className="event-button">View</button>
     </Link>
   );
 };
