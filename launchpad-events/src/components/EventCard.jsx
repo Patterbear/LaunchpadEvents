@@ -8,10 +8,7 @@ const EventCard = ({ event }) => {
       <p className="event-location">{event.location}</p>
       <p className="event-date">
         {new Date(event.date).toLocaleDateString("en-GB")} @
-        {new Date(event.date).toLocaleTimeString([], {
-          hour: "2-digit",
-          minute: "2-digit",
-        })}
+        {event.time.split(":").slice(0, 2).join(":")}
       </p>
     </Link>
   );
