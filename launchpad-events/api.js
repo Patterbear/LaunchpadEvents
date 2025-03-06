@@ -9,3 +9,9 @@ export const fetchEvents = () => {
     return response.data.events;
   });
 };
+
+export const fetchEventById = (event_id) => {
+  return api.get(`/events/${event_id}`).then((response) => {
+    return response.data.event;
+  });
+};

@@ -84,7 +84,7 @@ body {
 }
 
 .header-banner {
-  height: 5rem;
+  height: 4rem;
   cursor: pointer;
   flex-shrink: 0;
 }
@@ -112,4 +112,60 @@ body {
 
 .event-card:hover .event-title {
   color: black;
+}
+
+.event-details-container {
+  text-align: center;
+  margin-top: 6rem;
+}
+
+.event-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 350px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.event-image {
+  margin-top: 1rem;
+  width: 20rem;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.event-info {
+  font-size: 14px;
+  color: #333;
+  margin-top: 10px;
+}
+
+.register-button {
+  background-color: white;
+  border: 2px solid black;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.register-button:hover {
+  background-color: black;
+  color: white;
+}
+
+#event-page-img {
+  margin-top: 0px;
+}
+
+.back-button {
+  height: 2.5rem;
+  width: auto;
+  cursor: pointer;
+  margin-right: 2rem;
+}
+
+.back-button:hover {
+  opacity: 0.8;
 }

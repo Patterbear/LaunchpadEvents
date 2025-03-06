@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const EventCard = ({ event }) => {
   return (
-    <Link to={`/event/${event.event_id}`} className="event-card">
+    <Link to={`/events/${event.event_id}`} className="event-card">
       <h2 className="event-title">{event.title}</h2>
       <img src={event.image} alt={`${event.title} event`} />
       <p className="event-location">{event.location}</p>
