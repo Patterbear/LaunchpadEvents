@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { fetchEventById } from "../../api";
-import banner from "../assets/banner.png";
-import backButtonImg from "../assets/back.png";
 import loadingGif from "../assets/loading.gif";
-import Header from "../components/Header";
 
 const EventPage = ({ profile }) => {
   const { event_id } = useParams();
