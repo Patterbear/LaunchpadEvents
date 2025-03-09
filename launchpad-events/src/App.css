@@ -4,12 +4,6 @@
   text-align: center;
 }
 
-@media (max-width: 480px) {
-  body {
-    margin-top: 12rem;
-  }
-}
-
 .event-card {
   display: flex;
   flex-direction: column;
@@ -93,6 +87,13 @@
   min-width: 200px;
   justify-content: flex-end;
   margin-top: 7rem;
+}
+
+
+@media (max-width: 480px) {
+  .header-search {
+    margin-top: 10rem;
+  }
 }
 
 .header-search input,
