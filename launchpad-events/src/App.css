@@ -5,9 +5,17 @@
 }
 
 .back-button {
-  top: 8rem;
+  top: 9rem;
   left: 1rem;
   position: fixed;
+}
+
+@media (max-width: 480px) {
+  .back-button {
+    top: 10rem;
+    font-size: 0.75rem;
+    padding: 8px;
+  }
 }
 
 button {
@@ -90,7 +98,7 @@ button {
 }
 
 .header-banner {
-  height: 5rem;
+  height: 6rem;
   cursor: pointer;
   flex-shrink: 0;
   margin-top: 1rem;
@@ -98,7 +106,7 @@ button {
 
 .header-search,
 .event-page {
-  margin-top: 7rem;
+  margin-top: 8rem;
 }
 
 .header-search {
@@ -123,7 +131,7 @@ button {
 @media (max-width: 480px) {
   .header-search,
   .event-page {
-    margin-top: 10rem;
+    margin-top: 8rem;
   }
 }
 
