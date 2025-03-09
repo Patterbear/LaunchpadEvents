@@ -1,46 +1,12 @@
 import { useEffect, useState } from "react";
 import { fetchEvents } from "../../api";
 import EventList from "../components/EventList";
-import { googleLogout, useGoogleLogin } from "@react-oauth/google";
-import axios from "axios";
-import Header from "../components/Header";
 import SearchBar from "../components/SearchBar";
 
 const Home = () => {
   const [events, setEvents] = useState([]);
   const [filteredEvents, setFilteredEvents] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState(null);
-  const [profile, setProfile] = useState(null);
-
-  const logIn = useGoogleLogin({
-    onSuccess: (codeResponse) => setUser(codeResponse),
-    onError: (error) => console.log("Login Failed:", error),
-  });
-
-  useEffect(() => {
-    if (user) {
-      axios
-        .get(
-          `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`,
-          {
-            headers: {
-              Authorization: `Bearer ${user.access_token}`,
-              Accept: "application/json",
-            },
-          }
-        )
-        .then((res) => {
-          setProfile(res.data);
-        })
-        .catch((err) => console.log(err));
-    }
-  }, [user]);
-
-  const logOut = () => {
-    googleLogout();
-    setProfile(null);
-  };
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchEvents()
@@ -73,14 +39,12 @@ const Home = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <Header 
-        onSearch={handleSearch} 
-        profile={profile} 
-        logOut={logOut}
-        logIn={logIn}
-      />
-      <SearchBar />
+    <div>
+      {!isLoading ? (
+        <SearchBar />
+      ) : (
+        <></>
+      )}
       <EventList events={events} />
     </div>
   );

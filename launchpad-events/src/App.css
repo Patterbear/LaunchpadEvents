@@ -4,25 +4,40 @@
   text-align: center;
 }
 
+.back-button {
+  top: 8rem;
+  left: 1rem;
+  position: fixed;
+}
+
+button {
+  border: 1px solid lightgray;
+  border-radius: 50px;
+}
+
+.register-button {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
 .event-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  padding: 15px;
-  margin: 10px;
-  width: 250px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 350px;
   box-sizing: border-box;
-  background-color: white;
+  background: white;
   border-radius: 10px;
-  text-decoration: none;
   color: black;
+  text-decoration: none;
 }
 
 .event-card img {
   width: 100%;
-  height: auto;
   max-width: 200px;
   max-height: 200px;
   border-radius: 5px;
@@ -36,9 +51,11 @@
   margin-bottom: 8px;
 }
 
-.event-location {
+.event-location,
+.event-info {
   font-size: 0.9rem;
   color: #333;
+  margin-top: 10px;
 }
 
 .event-date {
@@ -63,7 +80,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 10px 20px;
-  background-color: #fff;
+  background: white;
   position: fixed;
   top: 0;
   left: 0;
@@ -79,6 +96,11 @@
   margin-top: 1rem;
 }
 
+.header-search,
+.event-page {
+  margin-top: 7rem;
+}
+
 .header-search {
   display: flex;
   flex-wrap: wrap;
@@ -86,14 +108,6 @@
   flex: 1;
   min-width: 200px;
   justify-content: flex-end;
-  margin-top: 7rem;
-}
-
-
-@media (max-width: 480px) {
-  .header-search {
-    margin-top: 10rem;
-  }
 }
 
 .header-search input,
@@ -102,9 +116,16 @@
   font-size: 14px;
   flex-grow: 1;
   min-width: 120px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
 }
 
-
+@media (max-width: 480px) {
+  .header-search,
+  .event-page {
+    margin-top: 10rem;
+  }
+}
 
 .event-card:hover .event-title {
   color: black;
@@ -115,16 +136,6 @@
   margin-top: 6rem;
 }
 
-.event-card {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  max-width: 350px;
-  margin: 20px auto;
-  text-align: center;
-}
-
 .event-image {
   margin-top: 1rem;
   width: 20rem;
@@ -132,38 +143,8 @@
   border-radius: 5px;
 }
 
-.event-info {
-  font-size: 14px;
-  color: #333;
-  margin-top: 10px;
-}
-
-.register-button {
-  background-color: white;
-  border: 2px solid black;
-  padding: 10px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.register-button:hover {
-  background-color: black;
-  color: white;
-}
-
 #event-page-img {
-  margin-top: 0px;
-}
-
-.back-button {
-  height: 2.5rem;
-  width: auto;
-  cursor: pointer;
-  margin-right: 2rem;
-}
-
-.back-button:hover {
-  opacity: 0.8;
+  margin-top: 0;
 }
 
 #profile-img {
