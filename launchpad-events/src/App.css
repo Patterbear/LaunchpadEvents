@@ -4,10 +4,6 @@
   text-align: center;
 }
 
-body {
-  margin-top: 4rem;
-}
-
 @media (max-width: 480px) {
   body {
     margin-top: 12rem;
@@ -78,15 +74,15 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1000;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   gap: 10px;
 }
 
 .header-banner {
-  height: 4rem;
+  height: 5rem;
   cursor: pointer;
   flex-shrink: 0;
+  margin-top: 1rem;
 }
 
 .header-search {
@@ -96,12 +92,11 @@ body {
   flex: 1;
   min-width: 200px;
   justify-content: flex-end;
-  margin-right: 2rem;
+  margin-top: 7rem;
 }
 
 .header-search input,
-.header-search select,
-.header-search button {
+.header-search select {
   padding: 8px;
   font-size: 14px;
   flex-grow: 1;
@@ -168,4 +163,16 @@ body {
 
 .back-button:hover {
   opacity: 0.8;
+}
+
+#profile-img {
+  border-radius: 50%;
+  width: 4rem;
+  height: 4rem;
+  margin-top: 1rem;
+  margin-right: 2rem;
+}
+
+#login-button {
+  margin-right: 2rem;
 }

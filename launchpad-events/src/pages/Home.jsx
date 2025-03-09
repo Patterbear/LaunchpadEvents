@@ -1,18 +1,19 @@
 import { useEffect, useState } from "react";
 import { fetchEvents } from "../../api";
 import EventList from "../components/EventList";
-import SearchBar from "../components/SearchBar";
 import { googleLogout, useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
+import Header from "../components/Header";
+import SearchBar from "../components/SearchBar";
 
 const Home = () => {
   const [events, setEvents] = useState([]);
   const [filteredEvents, setFilteredEvents] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState(null);
   const [profile, setProfile] = useState(null);
 
-  const login = useGoogleLogin({
+  const logIn = useGoogleLogin({
     onSuccess: (codeResponse) => setUser(codeResponse),
     onError: (error) => console.log("Login Failed:", error),
   });
@@ -73,20 +74,13 @@ const Home = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <SearchBar onSearch={handleSearch} />
-      {profile ? (
-                <div>
-                    <img src={profile.picture} alt="user image" />
-                    <h3>User Logged in</h3>
-                    <p>Name: {profile.name}</p>
-                    <p>Email Address: {profile.email}</p>
-                    <br />
-                    <br />
-                    <button onClick={logOut}>Log out</button>
-                </div>
-            ) : (
-                <button onClick={() => login()}>Sign in with Google 🚀 </button>
-            )}
+      <Header 
+        onSearch={handleSearch} 
+        profile={profile} 
+        logOut={logOut}
+        logIn={logIn}
+      />
+      <SearchBar />
       <EventList events={events} />
     </div>
   );
