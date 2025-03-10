@@ -1,25 +1,16 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 const SearchBar = ({ onSearch }) => {
-  const navigate = useNavigate();
-  const [query, setQuery] = useState("");
   const [location, setLocation] = useState("All");
-  const [sortBy, setSortBy] = useState("soonest");
+  const [sort_by, setSortBy] = useState("soonest");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSearch({ query, location, sortBy });
+    onSearch({ location, sort_by });
   };
 
   return (
     <form className="header-search" onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Search events..."
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-      />
       <select value={location} onChange={(e) => setLocation(e.target.value)}>
         <option value="All">All Locations</option>
         <option value="Burton Latimer">Burton Latimer</option>
@@ -28,7 +19,7 @@ const SearchBar = ({ onSearch }) => {
         <option value="Corby">Corby</option>
         <option value="Leicester">Leicester</option>
       </select>
-      <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+      <select value={sort_by} onChange={(e) => setSortBy(e.target.value)}>
         <option value="soonest">Soonest</option>
         <option value="latest">Latest</option>
       </select>

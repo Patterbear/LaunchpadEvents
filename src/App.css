@@ -36,7 +36,7 @@ button {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   padding: 20px;
   margin: 20px auto;
-  max-width: 350px;
+  width: 250px;
   box-sizing: border-box;
   background: white;
   border-radius: 10px;

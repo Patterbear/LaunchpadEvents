@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import banner from "../assets/banner.png";
 
@@ -11,7 +10,7 @@ const Header = ({ profile, logOut, logIn }) => {
         src={banner}
         alt="Launchpad Events"
         className="header-banner"
-        onClick={() => navigate("/")}
+        onClick={() => navigate("/events")}
       />
       {profile ? (
         <img id="profile-img" src={profile.picture} alt="User Profile" />

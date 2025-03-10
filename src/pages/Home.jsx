@@ -1,50 +1,49 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect, useCallback } from "react";
+import { useSearchParams } from "react-router-dom";
 import { fetchEvents } from "../../api";
 import EventList from "../components/EventList";
 import SearchBar from "../components/SearchBar";
+import LoadingImage from "../assets/loading.gif";
 
 const Home = () => {
   const [events, setEvents] = useState([]);
-  const [filteredEvents, setFilteredEvents] = useState([]);
-  const [isLoading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const location = searchParams.get("location") || "All";
+  const sort_by = searchParams.get("sort_by") || "soonest";
 
   useEffect(() => {
-    fetchEvents()
-      .then((data) => {
-        setEvents(data);
-        setFilteredEvents(data);
-        setLoading(false);
-        window.scrollTo(0, 0);
+    fetchEvents(sort_by, location)
+      .then((responseEvents) => {
+        setEvents(responseEvents);
+        console.log(responseEvents);
+        setIsLoading(false);
       })
-      .catch((error) => {
-        console.error("Error fetching events:", error);
-        setLoading(false);
+      .catch((err) => {
+        setError(err);
       });
-  }, []);
+  }, [sort_by, location]);
 
-  const handleSearch = ({ query, location, sortBy }) => {
-    let filtered = events.filter(
-      (event) =>
-        event.title.toLowerCase().includes(query.toLowerCase()) &&
-        (location === "All" || event.location === location)
-    );
+  const handleSearch = useCallback(
+    ({ location, sort_by }) => {
+      setSearchParams({ location, sort_by });
+    },
+    [setSearchParams]
+  );
 
-    filtered.sort((a, b) =>
-      sortBy === "soonest"
-        ? new Date(a.date) - new Date(b.date)
-        : new Date(b.date) - new Date(a.date)
-    );
+  if (error) {
+    return <div>Error fetching events: {error.message}</div>;
+  }
 
-    setFilteredEvents(filtered);
-  };
+  if (isLoading) {
+    return <img src={LoadingImage} alt="Loading..." />;
+  }
 
   return (
     <div>
-      {!isLoading ? (
-        <SearchBar />
-      ) : (
-        <></>
-      )}
+      <SearchBar onSearch={handleSearch} />
       <EventList events={events} />
     </div>
   );

@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import Home from "./pages/Home";
 import EventPage from "./pages/EventPage";
 import Header from "./components/Header";
@@ -44,18 +49,9 @@ const App = () => {
     <Router>
       <Header profile={profile} logIn={logIn} logOut={logOut} />
       <Routes>
-        <Route
-          path="/"
-          element={
-            <Home />
-          }
-        />
-        <Route
-          path="/events/:event_id"
-          element={
-            <EventPage />
-          }
-        />
+        <Route path="/" element={<Navigate to="/events" />} />
+        <Route path="/events" element={<Home />} />
+        <Route path="/events/:event_id" element={<EventPage />} />
       </Routes>
     </Router>
   );
