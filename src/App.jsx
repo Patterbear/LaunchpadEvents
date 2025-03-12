@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Home from "./pages/Home";
 import EventPage from "./pages/EventPage";
+import CreateEvent from "./pages/CreateEvent";
 import Header from "./components/Header";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
@@ -52,6 +53,7 @@ const App = () => {
         <Route path="/" element={<Navigate to="/events" />} />
         <Route path="/events" element={<Home />} />
         <Route path="/events/:event_id" element={<EventPage />} />
+        <Route path="/create-event" element={<CreateEvent />} />
       </Routes>
     </Router>
   );

@@ -14,7 +14,7 @@ const Header = ({ profile, logOut, logIn }) => {
       />
       <div className="header-right">
         {profile ? (
-          <button id="create-event-button">Create Event ➕</button>
+          <button id="create-event-button" onClick={() => navigate("/create-event")}>Create Event ➕</button>
         ) : (
           <></>
         )}
