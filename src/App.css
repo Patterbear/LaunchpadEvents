@@ -1,21 +1,8 @@
+/* General Styles */
 #root {
   margin: 0 auto;
   padding: 1.5rem;
   text-align: center;
-}
-
-.back-button {
-  top: 9rem;
-  left: 1rem;
-  position: fixed;
-}
-
-@media (max-width: 480px) {
-  .back-button {
-    top: 10rem;
-    font-size: 0.75rem;
-    padding: 8px;
-  }
 }
 
 button {
@@ -23,9 +10,66 @@ button {
   border-radius: 50px;
 }
 
-.register-button {
-  padding-left: 50px;
-  padding-right: 50px;
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  gap: 10px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 2rem;
+}
+
+.header-banner {
+  height: 6rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  margin-top: 1rem;
+}
+
+.header-search {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  flex: 1;
+  width: 90vw;
+  justify-content: center;
+  align-items: center;
+  margin: 8rem 0 0 0.5rem;
+}
+
+.header-search input,
+.header-search select {
+  padding: 8px;
+  font-size: 14px;
+  flex-grow: 1;
+  min-width: 120px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+}
+
+/* Event Page */
+.event-page {
+  margin-top: 8rem;
+}
+
+.event-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 100%;
 }
 
 .event-card {
@@ -53,6 +97,10 @@ button {
   border: 2px solid #ddd;
 }
 
+.event-card:hover .event-title {
+  color: black;
+}
+
 .event-title {
   font-size: 1rem;
   font-weight: bold;
@@ -72,72 +120,6 @@ button {
   margin-top: auto;
 }
 
-.event-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  width: 100%;
-}
-
-
-.header {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 20px;
-  background: white;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  gap: 10px;
-}
-
-.header-banner {
-  height: 6rem;
-  cursor: pointer;
-  flex-shrink: 0;
-  margin-top: 1rem;
-}
-
-.header-search,
-.event-page {
-  margin-top: 8rem;
-}
-
-.header-search {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  flex: 1;
-  width: 90vw;
-  justify-content: center;
-  align-items: center;
-}
-
-.header-search input,
-.header-search select {
-  padding: 8px;
-  font-size: 14px;
-  flex-grow: 1;
-  min-width: 120px;
-  border: 1px solid lightgray;
-  border-radius: 10px;
-}
-
-@media (max-width: 480px) {
-  .header-search,
-  .event-page {
-    margin-top: 8rem;
-  }
-}
-
-.event-card:hover .event-title {
-  color: black;
-}
-
 .event-details-container {
   text-align: center;
   margin-top: 6rem;
@@ -154,14 +136,38 @@ button {
   margin-top: 0;
 }
 
+/* Buttons */
+.back-button {
+  top: 9rem;
+  left: 1rem;
+  position: fixed;
+}
+
+.register-button {
+  padding: 10px 40px;
+}
+
+#create-event-button {
+  margin: 0;
+}
+
+/* Profile */
 #profile-img {
   border-radius: 50%;
   width: 4rem;
   height: 4rem;
-  margin-top: 1rem;
-  margin-right: 2rem;
+  margin: 0 1rem;
 }
 
-#login-button {
-  margin-right: 2rem;
+/* Responsive Design */
+@media (max-width: 480px) {
+  .back-button {
+    top: 10rem;
+    font-size: 0.75rem;
+    padding: 8px;
+  }
+  .header-search,
+  .event-page {
+    margin-top: 8rem;
+  }
 }

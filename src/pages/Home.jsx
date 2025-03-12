@@ -42,10 +42,10 @@ const Home = () => {
   }
 
   return (
-    <>
+    <div id="home-page">
       <SearchBar onSearch={handleSearch} />
       <EventList events={events} />
-    </>
+    </div>
   );
 };
 

@@ -12,13 +12,20 @@ const Header = ({ profile, logOut, logIn }) => {
         className="header-banner"
         onClick={() => navigate("/events")}
       />
-      {profile ? (
-        <img id="profile-img" src={profile.picture} alt="User Profile" />
-      ) : (
-        <button onClick={logIn} id="login-button">
-          Sign in with Google 🚀
-        </button>
-      )}
+      <div className="header-right">
+        {profile ? (
+          <button id="create-event-button">Create Event ➕</button>
+        ) : (
+          <></>
+        )}
+        {profile ? (
+          <img id="profile-img" src={profile.picture} alt="User Profile" />
+        ) : (
+          <button onClick={logIn} id="login-button">
+            Sign in with Google 🚀
+          </button>
+        )}
+      </div>
     </header>
   );
 };
