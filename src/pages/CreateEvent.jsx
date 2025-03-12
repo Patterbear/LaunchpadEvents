@@ -45,14 +45,15 @@ const CreateEvent = () => {
               required
             />
           </label>
-          <label>Location:</label>
-          <input
-            type="text"
-            name="title"
-            value={formData.location}
-            onChange={handleChange}
-            required
-          />
+          <label>Location:
+            <input
+              type="text"
+              name="location"
+              value={formData.location}
+              onChange={handleChange}
+              required
+            />
+          </label>
           <label>
             Address:
             <input

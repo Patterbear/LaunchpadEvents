@@ -33,37 +33,50 @@ const EventPage = ({ profile }) => {
     const eventTitle = encodeURIComponent(event.title);
     const eventLocation = encodeURIComponent(event.address);
     const eventDescription = encodeURIComponent(event.description);
-  
-    const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&details=${eventDescription}&location=${eventLocation}&sf=true&output=xml`;
-  
+
+    const eventDate = new Date(event.date);
+    const [hour, minute] = event.time.split(":").map(Number);
+    eventDate.setUTCHours(hour, minute, 0, 0);
+    const endDateTime = new Date(eventDate.getTime() + 60 * 60 * 1000);
+
+    const formatDateTime = (date) =>
+      date.toISOString().replace(/[-:.]/g, "").slice(0, 15) + "Z";
+
+    const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&details=${eventDescription}&location=${eventLocation}&dates=${formatDateTime(
+      eventDate
+    )}/${formatDateTime(endDateTime)}&sf=true&output=xml`;
+
     window.open(googleCalendarUrl, "_blank");
   };
 
   return (
     <>
-      <button onClick={() => navigate(-1)} className="back-button">Back</button>
+      <button onClick={() => navigate(-1)} className="back-button">
+        Back
+      </button>
       <div className="event-page">
-
-<h2>{event.title}</h2>
-<img
-  id="event-page-img"
-  src={event.image}
-  alt={event.title}
-  className="event-image"
-/>
-<div className="event-details">
-  <div className="event-meta">
-    <p>
-      <strong>📍 {event.location}</strong>
-    </p>
-    <p>📅 {new Date(event.date).toLocaleDateString("en-GB")}</p>
-    <p>⏰ {event.time.split(":").slice(0, 2).join(":")}</p>
-    <i>{event.address}</i>
-  </div>
-  <p className="event-description">{event.description}</p>
-  <button className="register-button" onClick={handleRegister}>Register</button>
-</div>
-</div>
+        <h2>{event.title}</h2>
+        <img
+          id="event-page-img"
+          src={event.image}
+          alt={event.title}
+          className="event-image"
+        />
+        <div className="event-details">
+          <div className="event-meta">
+            <p>
+              <strong>📍 {event.location}</strong>
+            </p>
+            <p>📅 {new Date(event.date).toLocaleDateString("en-GB")}</p>
+            <p>⏰ {event.time.split(":").slice(0, 2).join(":")}</p>
+            <i>{event.address}</i>
+          </div>
+          <p className="event-description">{event.description}</p>
+          <button className="register-button" onClick={handleRegister}>
+            Register
+          </button>
+        </div>
+      </div>
     </>
   );
 };
