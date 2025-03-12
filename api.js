@@ -5,7 +5,7 @@ const api = axios.create({
 });
 
 export const fetchEvents = (sort_by, location) => {
-  if (location == "All") {
+  if (location == "All Locations") {
     location = undefined;
   }
 

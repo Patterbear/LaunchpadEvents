@@ -7,22 +7,43 @@ import LoadingImage from "../assets/loading.gif";
 
 const Home = () => {
   const [events, setEvents] = useState([]);
+  const [allLocations, setAllLocations] = useState(["All Locations"]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const location = searchParams.get("location") || "All";
+  useEffect(() => {
+    if (!searchParams.get("location") || !searchParams.get("sort_by")) {
+      setSearchParams(
+        { location: "All Locations", sort_by: "soonest" },
+        { replace: true }
+      );
+    }
+  }, [searchParams, setSearchParams]);
+
+  const location = searchParams.get("location") || "All Locations";
   const sort_by = searchParams.get("sort_by") || "soonest";
 
   useEffect(() => {
+    setIsLoading(true);
     fetchEvents(sort_by, location)
       .then((responseEvents) => {
         setEvents(responseEvents);
-        console.log(responseEvents);
-        setIsLoading(false);
+        setError(null);
+
+        if (location === "All Locations") {
+          const uniqueLocations = [
+            "All Locations",
+            ...new Set(responseEvents.map((event) => event.location)),
+          ];
+          setAllLocations(uniqueLocations);
+        }
       })
       .catch((err) => {
         setError(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }, [sort_by, location]);
 
@@ -33,17 +54,22 @@ const Home = () => {
     [setSearchParams]
   );
 
-  if (error) {
-    return <div>Error fetching events: {error.message}</div>;
-  }
-
   if (isLoading) {
     return <img src={LoadingImage} alt="Loading..." />;
   }
 
+  if (error) {
+    return <div>Error fetching events: {error.message}</div>;
+  }
+
   return (
     <div id="home-page">
-      <SearchBar onSearch={handleSearch} />
+      <SearchBar
+        onSearch={handleSearch}
+        locations={allLocations}
+        selectedLocation={location}
+        selectedSortBy={sort_by}
+      />
       <EventList events={events} />
     </div>
   );
