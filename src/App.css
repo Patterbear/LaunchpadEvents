@@ -143,6 +143,18 @@ button {
   position: fixed;
 }
 
+.edit-button {
+  top: 9rem;
+  right: 5.5rem;
+  position: fixed;
+}
+
+.delete-button {
+  top: 9rem;
+  right: 1rem;
+  position: fixed;
+}
+
 .register-button {
   padding: 10px 40px;
 }

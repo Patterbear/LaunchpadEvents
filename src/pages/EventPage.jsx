@@ -54,6 +54,12 @@ const EventPage = ({ profile }) => {
       <button onClick={() => navigate(-1)} className="back-button">
         Back
       </button>
+      <button onClick={() => navigate(-1)} className="edit-button">
+        ✏️
+      </button>
+      <button onClick={() => navigate(-1)} className="delete-button">
+        🗑️
+      </button>
       <div className="event-page">
         <h2>{event.title}</h2>
         <img

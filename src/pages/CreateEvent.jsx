@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { postEvent } from "../../api";
 
 const CreateEvent = () => {
   const navigate = useNavigate();
@@ -11,6 +13,7 @@ const CreateEvent = () => {
     time: "",
     image: null,
   });
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,7 +27,43 @@ const CreateEvent = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Event data:", formData);
+    setLoading(true);
+
+    let imageUrl = "";
+    const imageData = new FormData();
+    imageData.append("key", "05d2c7e7bf3b870079dd12ec888a897f");
+    imageData.append("image", formData.image);
+
+    axios
+      .post("https://api.imgbb.com/1/upload", imageData)
+      .then((imageResponse) => {
+        console.log(imageResponse);
+        imageUrl = imageResponse.data.data.url;
+        console.log(`Hello ${imageUrl}`);
+
+        const eventDetails = {
+          title: formData.title,
+          location: formData.location,
+          address: formData.address,
+          date: formData.date,
+          time: formData.time,
+          image: imageUrl,
+          description: formData.description,
+        };
+
+        return postEvent(eventDetails);
+      })
+      .then((response) => {
+        alert("Event created successfully!");
+        navigate(`/events/${response.data.event.event_id}`);
+      })
+      .catch((error) => {
+        console.error("Error creating event:", error);
+        alert("Failed to create event. Please try again.");
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
@@ -45,7 +84,8 @@ const CreateEvent = () => {
               required
             />
           </label>
-          <label>Location:
+          <label>
+            Location:
             <input
               type="text"
               name="location"
@@ -64,6 +104,16 @@ const CreateEvent = () => {
               required
             />
           </label>
+          <label>
+            Description:
+            <input
+              type="text"
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+              required
+            />
+          </label>
 
           <div className="date-time">
             <label>
@@ -76,7 +126,6 @@ const CreateEvent = () => {
                 required
               />
             </label>
-
             <label>
               Time:
               <input
@@ -94,8 +143,8 @@ const CreateEvent = () => {
             <input type="file" accept="image/*" onChange={handleImageUpload} />
           </label>
 
-          <button type="submit" className="submit-button">
-            Create Event
+          <button type="submit" className="submit-button" disabled={loading}>
+            {loading ? "Creating..." : "Create Event"}
           </button>
         </form>
       </div>

@@ -27,3 +27,7 @@ export const fetchEventById = (event_id) => {
     return response.data.event;
   });
 };
+
+export const postEvent = (event) => {
+  return api.post(`/events`, event);
+};
