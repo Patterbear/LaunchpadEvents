@@ -31,3 +31,7 @@ export const fetchEventById = (event_id) => {
 export const postEvent = (event) => {
   return api.post(`/events`, event);
 };
+
+export const removeEventById = (event_id) => {
+  return api.delete(`/events/${event_id}`);
+};

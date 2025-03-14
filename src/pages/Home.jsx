@@ -4,6 +4,7 @@ import { fetchEvents } from "../../api";
 import EventList from "../components/EventList";
 import SearchBar from "../components/SearchBar";
 import LoadingImage from "../assets/loading.gif";
+import { useLocation } from "react-router-dom";
 
 const Home = () => {
   const [events, setEvents] = useState([]);
@@ -31,12 +32,14 @@ const Home = () => {
         setEvents(responseEvents);
         setError(null);
 
-        if (location === "All Locations") {
-          const uniqueLocations = [
-            "All Locations",
-            ...new Set(responseEvents.map((event) => event.location)),
-          ];
-          setAllLocations(uniqueLocations);
+        const uniqueLocations = [
+          "All Locations",
+          ...new Set(responseEvents.map((event) => event.location)),
+        ];
+        setAllLocations(uniqueLocations);
+
+        if (!uniqueLocations.includes(location)) {
+          setSearchParams({ location: "All Locations", sort_by: sort_by });
         }
       })
       .catch((err) => {

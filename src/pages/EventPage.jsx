@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { fetchEventById } from "../../api";
+import { fetchEventById, removeEventById } from "../../api";
 import loadingGif from "../assets/loading.gif";
 
 const EventPage = ({ profile }) => {
@@ -49,6 +49,20 @@ const EventPage = ({ profile }) => {
     window.open(googleCalendarUrl, "_blank");
   };
 
+  const handleDeleteEvent = () => {
+    const isConfirmed = window.confirm(
+      "Are you sure you want to delete this event?"
+    );
+    if (isConfirmed) {
+      removeEventById(event_id)
+        .then(() => {
+          navigate(-1);
+          onEventDeleted();
+        })
+        .catch((error) => console.error("Error deleting event:", error));
+    }
+  };
+
   return (
     <>
       <button onClick={() => navigate(-1)} className="back-button">
@@ -57,7 +71,7 @@ const EventPage = ({ profile }) => {
       <button onClick={() => navigate(-1)} className="edit-button">
         ✏️
       </button>
-      <button onClick={() => navigate(-1)} className="delete-button">
+      <button onClick={handleDeleteEvent} className="delete-button">
         🗑️
       </button>
       <div className="event-page">

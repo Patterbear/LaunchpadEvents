@@ -13,6 +13,10 @@ import Header from "./components/Header";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 
+const handleEventDeleted = () => {
+  fetchEvents().then((data) => setEvents(data));
+};
+
 const App = () => {
   const [user, setUser] = useState(null);
   const [profile, setProfile] = useState(null);
@@ -52,7 +56,10 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Navigate to="/events" />} />
         <Route path="/events" element={<Home />} />
-        <Route path="/events/:event_id" element={<EventPage />} />
+        <Route
+          path="/events/:event_id"
+          element={<EventPage onEventDeleted={handleEventDeleted} />}
+        />
         <Route path="/create-event" element={<CreateEvent />} />
       </Routes>
     </Router>
