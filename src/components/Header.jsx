@@ -14,12 +14,12 @@ const Header = ({ profile, logOut, logIn }) => {
       />
       <div className="header-right">
         {profile ? (
-          <button id="create-event-button" onClick={() => navigate("/create-event")}>Create Event ➕</button>
+          <button className="create-event-button" onClick={() => navigate("/create-event")}>Create Event ➕</button>
         ) : (
           <></>
         )}
         {profile ? (
-          <img id="profile-img" src={profile.picture} alt="User Profile" />
+          <img className="profile-img" src={profile.picture} alt="User Profile" />
         ) : (
           <button onClick={logIn} id="login-button">
             Sign in with Google 🚀

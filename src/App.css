@@ -170,12 +170,12 @@ button {
   padding: 10px 40px;
 }
 
-#create-event-button {
+.create-event-button {
   margin: 0;
 }
 
 /* Profile */
-#profile-img {
+.profile-img {
   border-radius: 50%;
   width: 4rem;
   height: 4rem;
