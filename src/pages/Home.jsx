@@ -32,10 +32,14 @@ const Home = () => {
         setEvents(responseEvents);
         setError(null);
 
-        const uniqueLocations = [
-          "All Locations",
-          ...new Set(responseEvents.map((event) => event.location)),
-        ];
+        let uniqueLocations = allLocations;
+
+        if (location == "All Locations") {
+          uniqueLocations = [
+            "All Locations",
+            ...new Set(responseEvents.map((event) => event.location)),
+          ];
+        }
         setAllLocations(uniqueLocations);
 
         if (!uniqueLocations.includes(location)) {
