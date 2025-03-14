@@ -81,6 +81,7 @@ button {
   justify-content: flex-start;
   width: 100%;
   margin-top: 11rem;
+  margin-left: 2.5%;
 }
 
 .event-card {
