@@ -30,23 +30,7 @@ const EventPage = () => {
   }
 
   const handleRegister = () => {
-    const eventTitle = encodeURIComponent(event.title);
-    const eventLocation = encodeURIComponent(event.address);
-    const eventDescription = encodeURIComponent(event.description);
-
-    const eventDate = new Date(event.date);
-    const [hour, minute] = event.time.split(":").map(Number);
-    eventDate.setUTCHours(hour, minute, 0, 0);
-    const endDateTime = new Date(eventDate.getTime() + 60 * 60 * 1000);
-
-    const formatDateTime = (date) =>
-      date.toISOString().replace(/[-:.]/g, "").slice(0, 15) + "Z";
-
-    const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&details=${eventDescription}&location=${eventLocation}&dates=${formatDateTime(
-      eventDate
-    )}/${formatDateTime(endDateTime)}&sf=true&output=xml`;
-
-    window.open(googleCalendarUrl, "_blank");
+    navigate("/registered", { state: { event } });
   };
 
   const handleDeleteEvent = () => {
