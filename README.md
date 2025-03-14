@@ -31,7 +31,7 @@ To host this application locally, you must:
 3. Run the `npm install` command to install required packages
 4. Run `npm run dev` to host the application locally
 
-By default, the application runs on 5173, so can be found accessed at [localhost:5173](http://localhost:5173).
+By default, the application runs on 5173, so can be found accessed at [localhost:5173](http://localhost:5173)
 
 
 
