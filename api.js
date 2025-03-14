@@ -17,7 +17,6 @@ export const fetchEvents = (sort_by, location) => {
       },
     })
     .then((response) => {
-      console.log(response.data.events);
       return response.data.events;
     });
 };
@@ -34,4 +33,8 @@ export const postEvent = (event) => {
 
 export const removeEventById = (event_id) => {
   return api.delete(`/events/${event_id}`);
+};
+
+export const updateEventById = (event_id, eventData) => {
+  return api.patch(`/events/${event_id}`, eventData);
 };

@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { fetchEventById, removeEventById } from "../../api";
 import loadingGif from "../assets/loading.gif";
 
-const EventPage = ({ profile }) => {
+const EventPage = () => {
   const { event_id } = useParams();
   const navigate = useNavigate();
   const [event, setEvent] = useState(null);
@@ -68,7 +68,10 @@ const EventPage = ({ profile }) => {
       <button onClick={() => navigate(-1)} className="back-button">
         Back
       </button>
-      <button onClick={() => navigate(-1)} className="edit-button">
+      <button
+        onClick={() => navigate(`/events/${event_id}/edit`)}
+        className="edit-button"
+      >
         ✏️
       </button>
       <button onClick={handleDeleteEvent} className="delete-button">

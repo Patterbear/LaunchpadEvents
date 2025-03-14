@@ -9,6 +9,7 @@ import {
 import Home from "./pages/Home";
 import EventPage from "./pages/EventPage";
 import CreateEvent from "./pages/CreateEvent";
+import EditEvent from "./pages/EditEvent";
 import Header from "./components/Header";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
@@ -61,6 +62,7 @@ const App = () => {
           element={<EventPage onEventDeleted={handleEventDeleted} />}
         />
         <Route path="/create-event" element={<CreateEvent />} />
+        <Route path="/events/:event_id/edit" element={<EditEvent />} />
       </Routes>
     </Router>
   );
