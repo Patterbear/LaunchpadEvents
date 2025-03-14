@@ -4,7 +4,6 @@ import { fetchEvents } from "../../api";
 import EventList from "../components/EventList";
 import SearchBar from "../components/SearchBar";
 import LoadingImage from "../assets/loading.gif";
-import { useLocation } from "react-router-dom";
 
 const Home = () => {
   const [events, setEvents] = useState([]);

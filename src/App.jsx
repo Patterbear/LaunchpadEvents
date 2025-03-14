@@ -60,7 +60,9 @@ const App = () => {
         <Route path="/events" element={<Home />} />
         <Route
           path="/events/:event_id"
-          element={<EventPage onEventDeleted={handleEventDeleted} />}
+          element={
+            <EventPage profile={profile} logIn = {logIn} onEventDeleted={handleEventDeleted} />
+          }
         />
         <Route path="/create-event" element={<CreateEvent />} />
         <Route path="/events/:event_id/edit" element={<EditEvent />} />

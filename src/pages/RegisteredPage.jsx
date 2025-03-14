@@ -1,18 +1,14 @@
 import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const RegisteredPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const event = location.state?.event;
 
-  if (!event) {
-    return (
-      <div className="registered-container">
-        <h2>No event found</h2>
-        <button onClick={() => navigate("/")}>Go to Home</button>
-      </div>
-    );
-  }
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleAddToCalendar = () => {
     const eventTitle = encodeURIComponent(event.title);

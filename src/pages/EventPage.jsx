@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { fetchEventById, removeEventById } from "../../api";
 import loadingGif from "../assets/loading.gif";
 
-const EventPage = () => {
+const EventPage = ({ profile, logIn, onEventDeleted }) => {
   const { event_id } = useParams();
   const navigate = useNavigate();
   const [event, setEvent] = useState(null);
@@ -30,6 +30,10 @@ const EventPage = () => {
   }
 
   const handleRegister = () => {
+    if (!profile) {
+      logIn(); // Trigger Google Sign-In instead of showing an alert
+      return;
+    }
     navigate("/registered", { state: { event } });
   };
 
@@ -79,8 +83,9 @@ const EventPage = () => {
             <i>{event.address}</i>
           </div>
           <p className="event-description">{event.description}</p>
+
           <button className="register-button" onClick={handleRegister}>
-            Register
+            {profile ? "Register" : "Sign in to Register"}
           </button>
         </div>
       </div>
