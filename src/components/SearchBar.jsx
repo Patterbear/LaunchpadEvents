@@ -15,7 +15,7 @@ const SearchBar = ({
   };
 
   return (
-    <form className="header-search" onSubmit={handleSubmit}>
+    <form className="search-bar" onSubmit={handleSubmit}>
       <select value={location} onChange={(e) => setLocation(e.target.value)}>
         {locations.map((loc, index) => (
           <option key={index} value={loc}>

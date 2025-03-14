@@ -21,8 +21,7 @@ button {
   top: 0;
   left: 0;
   width: 100%;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  gap: 10px;
+  z-index: 1000;
 }
 
 .header-right {
@@ -39,25 +38,36 @@ button {
   margin-top: 1rem;
 }
 
-.header-search {
+.search-bar {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  flex: 1;
+  gap: 5px;
   width: 90vw;
   justify-content: center;
   align-items: center;
-  margin: 8rem 0 0 0.5rem;
+  position: fixed;
+  top: 8rem;
+  left: 0;
+  width: 100%;
+  background: white;
+  padding: 10px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 999;
 }
 
-.header-search input,
-.header-search select {
+
+.search-bar input,
+.search-bar select {
   padding: 8px;
   font-size: 14px;
   flex-grow: 1;
-  min-width: 120px;
   border: 1px solid lightgray;
   border-radius: 10px;
+  margin-left: 1rem;
+}
+
+.search-bar button {
+  margin-right: 1rem;
 }
 
 /* Event Page */
@@ -70,6 +80,7 @@ button {
   flex-wrap: wrap;
   justify-content: flex-start;
   width: 100%;
+  margin-top: 11rem;
 }
 
 .event-card {
@@ -178,9 +189,8 @@ button {
     font-size: 0.75rem;
     padding: 8px;
   }
-  .header-search,
   .event-page {
-    margin-top: 8rem;
+    margin-top: 11rem;
   }
 }
 
