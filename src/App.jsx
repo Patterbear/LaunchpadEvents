@@ -11,22 +11,18 @@ import EventPage from "./pages/EventPage";
 import CreateEvent from "./pages/CreateEvent";
 import EditEvent from "./pages/EditEvent";
 import RegisteredPage from "./pages/RegisteredPage";
+import LoginPage from "./pages/LoginPage";
 import Header from "./components/Header";
-import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 
 const handleEventDeleted = () => {
   fetchEvents().then((data) => setEvents(data));
 };
 
+
 const App = () => {
   const [user, setUser] = useState(null);
   const [profile, setProfile] = useState(null);
-
-  const logIn = useGoogleLogin({
-    onSuccess: (codeResponse) => setUser(codeResponse),
-    onError: (error) => console.log("Login Failed:", error),
-  });
 
   const logOut = () => {
     setUser(null);
@@ -46,7 +42,10 @@ const App = () => {
           }
         )
         .then((res) => {
-          setProfile(res.data);
+          const responseProfile = res.data;
+          responseProfile.role = "user";
+          setProfile(responseProfile);
+          navigate(-1);
         })
         .catch((err) => console.log(err));
     }
@@ -54,19 +53,23 @@ const App = () => {
 
   return (
     <Router>
-      <Header profile={profile} logIn={logIn} logOut={logOut} />
+      <Header profile={profile} logOut={logOut} />
       <Routes>
         <Route path="/" element={<Navigate to="/events" />} />
         <Route path="/events" element={<Home />} />
         <Route
           path="/events/:event_id"
           element={
-            <EventPage profile={profile} logIn = {logIn} onEventDeleted={handleEventDeleted} />
+            <EventPage
+              profile={profile}
+              onEventDeleted={handleEventDeleted}
+            />
           }
         />
         <Route path="/create-event" element={<CreateEvent />} />
         <Route path="/events/:event_id/edit" element={<EditEvent />} />
         <Route path="/registered" element={<RegisteredPage />} />
+        <Route path="/login" element={<LoginPage setProfile={setProfile} setUser={setUser}/>} />
       </Routes>
     </Router>
   );

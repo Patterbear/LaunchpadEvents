@@ -1,8 +1,14 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import banner from "../assets/banner.png";
 
-const Header = ({ profile, logOut, logIn }) => {
+const Header = ({ profile, logOut }) => {
   const navigate = useNavigate();
+  const [showMenu, setShowMenu] = useState(false);
+
+  const toggleMenu = () => {
+    setShowMenu((prev) => !prev);
+  };
 
   return (
     <header className="header">
@@ -13,16 +19,36 @@ const Header = ({ profile, logOut, logIn }) => {
         onClick={() => navigate("/events")}
       />
       <div className="header-right">
-        {profile ? (
-          <button className="create-event-button" onClick={() => navigate("/create-event")}>Create Event ➕</button>
-        ) : (
-          <></>
+        {profile?.role === "admin" && (
+          <button
+            className="create-event-button"
+            onClick={() => navigate("/create-event")}
+          >
+            Create Event ➕
+          </button>
         )}
+
         {profile ? (
-          <img className="profile-img" src={profile.picture} alt="User Profile" />
+          <div className="profile-container" onMouseLeave={toggleMenu}>
+            <img
+              className="profile-img"
+              src={profile.picture}
+              alt="User Profile"
+              onMouseEnter={toggleMenu}
+            />
+
+            {showMenu && (
+              <div className="profile-menu">
+                <button onClick={() => navigate("/my-events")}>
+                  My Events
+                </button>
+                <button onClick={logOut}>Log Out</button>
+              </div>
+            )}
+          </div>
         ) : (
-          <button onClick={logIn} id="login-button">
-            Sign in with Google 🚀
+          <button onClick={() => navigate("/login")} id="login-button">
+            Sign in
           </button>
         )}
       </div>

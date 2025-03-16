@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { fetchEventById, removeEventById } from "../../api";
 import loadingGif from "../assets/loading.gif";
 
-const EventPage = ({ profile, logIn, onEventDeleted }) => {
+const EventPage = ({ profile, onEventDeleted }) => {
   const { event_id } = useParams();
   const navigate = useNavigate();
   const [event, setEvent] = useState(null);
@@ -31,7 +31,7 @@ const EventPage = ({ profile, logIn, onEventDeleted }) => {
 
   const handleRegister = () => {
     if (!profile) {
-      logIn(); // Trigger Google Sign-In instead of showing an alert
+      navigate("/login");
       return;
     }
     navigate("/registered", { state: { event } });
@@ -56,15 +56,22 @@ const EventPage = ({ profile, logIn, onEventDeleted }) => {
       <button onClick={() => navigate(-1)} className="back-button">
         Back
       </button>
-      <button
-        onClick={() => navigate(`/events/${event_id}/edit`)}
-        className="edit-button"
-      >
-        ✏️
-      </button>
-      <button onClick={handleDeleteEvent} className="delete-button">
-        🗑️
-      </button>
+
+      {/* Show edit & delete buttons only if profile.role is "admin" */}
+      {profile?.role === "admin" && (
+        <>
+          <button
+            onClick={() => navigate(`/events/${event_id}/edit`)}
+            className="edit-button"
+          >
+            ✏️
+          </button>
+          <button onClick={handleDeleteEvent} className="delete-button">
+            🗑️
+          </button>
+        </>
+      )}
+
       <div className="event-page">
         <h2>{event.title}</h2>
         <img
