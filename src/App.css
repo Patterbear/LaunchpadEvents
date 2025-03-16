@@ -38,6 +38,11 @@ button {
   margin-top: 1rem;
 }
 
+.header button {
+  margin-top: -0.5rem;
+  margin-right: 0.5rem;
+}
+
 .search-bar {
   display: flex;
   flex-wrap: wrap;
@@ -397,13 +402,12 @@ button {
 }
 
 .profile-menu button {
-  background: none;
-  border: none;
-  padding: 10px;
   text-align: center;
   cursor: pointer;
   width: 100%;
   border-radius: 0%;
+  padding: 10px;
+  margin: 0;
 }
 
 .profile-menu button:hover {

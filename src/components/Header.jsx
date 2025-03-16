@@ -6,8 +6,12 @@ const Header = ({ profile, logOut }) => {
   const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
 
-  const toggleMenu = () => {
-    setShowMenu((prev) => !prev);
+  const openMenu = () => {
+    setShowMenu(true);
+  };
+
+  const closeMenu = () => {
+    setShowMenu(false);
   };
 
   return (
@@ -29,12 +33,12 @@ const Header = ({ profile, logOut }) => {
         )}
 
         {profile ? (
-          <div className="profile-container" onMouseLeave={toggleMenu}>
+          <div className="profile-container" onMouseLeave={closeMenu}>
             <img
               className="profile-img"
               src={profile.picture}
               alt="User Profile"
-              onMouseEnter={toggleMenu}
+              onMouseEnter={openMenu}
             />
 
             {showMenu && (

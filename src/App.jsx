@@ -45,7 +45,6 @@ const App = () => {
           const responseProfile = res.data;
           responseProfile.role = "user";
           setProfile(responseProfile);
-          navigate(-1);
         })
         .catch((err) => console.log(err));
     }

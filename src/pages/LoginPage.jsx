@@ -17,7 +17,10 @@ const LoginPage = ({ setProfile, setUser }) => {
   };
 
   const logIn = useGoogleLogin({
-    onSuccess: (codeResponse) => setUser(codeResponse),
+    onSuccess: (codeResponse) => {
+      setUser(codeResponse);
+      navigate(-1);
+    },
     onError: (error) => console.log("Login Failed:", error),
   });
 
@@ -53,7 +56,7 @@ const LoginPage = ({ setProfile, setUser }) => {
   };
 
   const handleGoogleLogIn = () => {
-    logIn();
+    logIn()
   };
 
   return (
