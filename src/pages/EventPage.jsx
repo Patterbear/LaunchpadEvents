@@ -52,51 +52,46 @@ const EventPage = ({ profile, onEventDeleted }) => {
   };
 
   return (
-    <>
+    <main>
       <button onClick={() => navigate(-1)} className="back-button">
         Back
       </button>
-
-      {/* Show edit & delete buttons only if profile.role is "admin" */}
       {profile?.role === "admin" && (
         <>
           <button
+            aria-label="Edit"
             onClick={() => navigate(`/events/${event_id}/edit`)}
             className="edit-button"
           >
             ✏️
           </button>
-          <button onClick={handleDeleteEvent} className="delete-button">
+          <button
+            aria-label="Delete"
+            onClick={handleDeleteEvent}
+            className="delete-button"
+          >
             🗑️
           </button>
         </>
       )}
 
-      <div className="event-page">
+      <section className="event-page">
         <h2>{event.title}</h2>
-        <img
-          id="event-page-img"
-          src={event.image}
-          alt={event.title}
-          className="event-image"
-        />
-        <div className="event-details">
-          <div className="event-meta">
-            <p>
-              <strong>📍 {event.location}</strong>
-            </p>
-            <p>📅 {new Date(event.date).toLocaleDateString("en-GB")}</p>
-            <p>⏰ {event.time.split(":").slice(0, 2).join(":")}</p>
-            <i>{event.address}</i>
-          </div>
+        <img src={event.image} alt={event.title} className="event-image" />
+        <section className="event-details">
+          <p>
+            <strong>📍 {event.location}</strong>
+          </p>
+          <p>📅 {new Date(event.date).toLocaleDateString("en-GB")}</p>
+          <p>⏰ {event.time.split(":").slice(0, 2).join(":")}</p>
+          <i>{event.address}</i>
           <p className="event-description">{event.description}</p>
-
-          <button className="register-button" onClick={handleRegister}>
-            {profile ? "Register" : "Sign in to Register"}
-          </button>
-        </div>
-      </div>
-    </>
+        </section>
+        <button className="register-button" onClick={handleRegister}>
+          {profile ? "Register" : "Sign in to Register"}
+        </button>
+      </section>
+    </main>
   );
 };
 

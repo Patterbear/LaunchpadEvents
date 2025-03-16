@@ -69,7 +69,7 @@ const Home = () => {
   }
 
   return (
-    <div id="home-page">
+    <main id="home-page">
       <SearchBar
         onSearch={handleSearch}
         locations={allLocations}
@@ -77,7 +77,7 @@ const Home = () => {
         selectedSortBy={sort_by}
       />
       <EventList events={events} />
-    </div>
+    </main>
   );
 };
 

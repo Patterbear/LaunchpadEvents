@@ -94,11 +94,11 @@ const EditEvent = () => {
   };
 
   return (
-    <div className="edit-event-container">
+    <main className="edit-event-container">
       <button onClick={() => navigate(-1)} className="back-button">
         Back
       </button>
-      <div className="edit-event-card">
+      <section className="edit-event-card">
         <h2>Edit Event</h2>
         <form onSubmit={handleSubmit}>
           <label>
@@ -142,7 +142,7 @@ const EditEvent = () => {
             />
           </label>
 
-          <div className="date-time">
+          <section className="date-time">
             <label>
               Date:
               <input
@@ -163,7 +163,7 @@ const EditEvent = () => {
                 required
               />
             </label>
-          </div>
+          </section>
 
           <label className="file-upload">
             Upload New Image:
@@ -174,8 +174,8 @@ const EditEvent = () => {
             {loading ? "Updating..." : "Update Event"}
           </button>
         </form>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };
 

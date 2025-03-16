@@ -67,11 +67,11 @@ const CreateEvent = () => {
   };
 
   return (
-    <div className="create-event-container">
+    <main className="create-event-container">
       <button onClick={() => navigate(-1)} className="back-button">
         Back
       </button>
-      <div className="create-event-card">
+      <section className="create-event-card">
         <h2>Create New Event</h2>
         <form onSubmit={handleSubmit}>
           <label>
@@ -115,7 +115,7 @@ const CreateEvent = () => {
             />
           </label>
 
-          <div className="date-time">
+          <section className="date-time">
             <label>
               Date:
               <input
@@ -136,7 +136,7 @@ const CreateEvent = () => {
                 required
               />
             </label>
-          </div>
+          </section>
 
           <label className="file-upload">
             Upload Image:
@@ -147,8 +147,8 @@ const CreateEvent = () => {
             {loading ? "Creating..." : "Create Event"}
           </button>
         </form>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };
 

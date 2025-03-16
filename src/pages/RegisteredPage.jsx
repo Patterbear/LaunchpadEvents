@@ -31,12 +31,12 @@ const RegisteredPage = () => {
   };
 
   return (
-    <div className="registered-container">
+    <main className="registered-container">
       <button onClick={() => navigate(-1)} className="back-button">
         Back
       </button>
 
-      <div className="registered-card">
+      <section className="registered-card">
         <h2>You're Registered!</h2>
         <h3>{event.title}</h3>
         <p>
@@ -52,8 +52,8 @@ const RegisteredPage = () => {
         <img src={event.image} alt={event.title} className="event-image" />
 
         <button onClick={() => handleAddToCalendar()}>Add to Calendar</button>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };
 

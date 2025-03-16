@@ -60,13 +60,13 @@ const LoginPage = ({ setProfile, setUser }) => {
   };
 
   return (
-    <div className="login-container">
+    <main className="login-container">
       <button onClick={() => navigate(-1)} className="back-button">
         Back
       </button>
-      <div className="login-card">
+      <section className="login-card">
         <h2>Login</h2>
-        {error && <p className="error">{error}</p>}
+        {error && <p className="error" >{error}</p>}
 
         <form onSubmit={handleSubmit}>
           <label>Email:</label>
@@ -97,8 +97,8 @@ const LoginPage = ({ setProfile, setUser }) => {
         <button onClick={handleGoogleLogIn} className="google-signin">
           Sign in with Google
         </button>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };
 

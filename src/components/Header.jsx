@@ -22,7 +22,7 @@ const Header = ({ profile, logOut }) => {
         className="header-banner"
         onClick={() => navigate("/events")}
       />
-      <div className="header-right">
+      <section className="header-right">
         {profile?.role === "admin" && (
           <button
             className="create-event-button"
@@ -33,7 +33,7 @@ const Header = ({ profile, logOut }) => {
         )}
 
         {profile ? (
-          <div className="profile-container" onMouseLeave={closeMenu}>
+          <section className="profile-container" onMouseLeave={closeMenu}>
             <img
               className="profile-img"
               src={profile.picture}
@@ -42,20 +42,20 @@ const Header = ({ profile, logOut }) => {
             />
 
             {showMenu && (
-              <div className="profile-menu">
+              <section className="profile-menu">
                 <button onClick={() => navigate("/my-events")}>
                   My Events
                 </button>
                 <button onClick={logOut}>Log Out</button>
-              </div>
+              </section>
             )}
-          </div>
+          </section>
         ) : (
           <button onClick={() => navigate("/login")} id="login-button">
             Sign in
           </button>
         )}
-      </div>
+      </section>
     </header>
   );
 };
