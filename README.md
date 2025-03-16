@@ -1,14 +1,14 @@
 # Launchpad Events Web App 🚀 
 
-**Launchpad Events** is a dynamic **React.js** web application designed to help users seamlessly **discover, register for, and create events**
+**Launchpad Events** is a dynamic **React.js** web application designed to help users seamlessly **discover** and **register for** events.
 
 ### ✨ Key Features:  
 - **Browse & Filter Events** – Easily find events and filter by location  
 - **Event Registration** – Sign up to events
-- **Create & Manage Events** – Host your own events, upload images, and edit details anytime  
 - **Google Calendar Integration** – Easily add events to **Google Calendar**
+- **Create & Manage Events** – Staff can create, edit, and delete events 
 - **Secure Authentication** – Powered by **OAuth 2.0 via Google Cloud** for a safe login experience  
-- **Responsive Design** – A seamless experience across desktop and mobile  
+- **Responsive Design** – Seamless experience across desktop and mobile  
 
 ---  
 
@@ -18,7 +18,9 @@
 
 📡 **API:** Event data is powered by a robust backend, hosted **[here](https://launchpad-events-platform.onrender.com/api/events)**
 
-🔐 **Authentication:** OAuth 2.0 via Google Cloud is used to ensure secure user login and data privacy
+🔐 **Authentication:** [**OAuth 2.0 via Google Cloud**](https://developers.google.com/identity/protocols/oauth2) is used to ensure secure user login and data privacy
+
+🖼️ **Image Hosting:** Event images are hosted on [**ImgBB**](https://imgbb.com/) and are programmatically uploaded using their [**API**](https://api.imgbb.com/)
 
 ---
 
@@ -31,7 +33,7 @@ To host this application locally, you must:
 3. Run the `npm install` command to install required packages
 4. Run `npm run dev` to host the application locally
 
-By default, the application runs on 5173, so can be found accessed at [localhost:5173](http://localhost:5173)
+By default, the application runs on port 5173, so can be accessed at [**localhost:5173**](http://localhost:5173)
 
 
 
