@@ -12,6 +12,7 @@ import CreateEvent from "./pages/CreateEvent";
 import EditEvent from "./pages/EditEvent";
 import RegisteredPage from "./pages/RegisteredPage";
 import LoginPage from "./pages/LoginPage";
+import MyEvents from "./pages/MyEvents";
 import Header from "./components/Header";
 import axios from "axios";
 
@@ -19,10 +20,10 @@ const handleEventDeleted = () => {
   fetchEvents().then((data) => setEvents(data));
 };
 
-
 const App = () => {
   const [user, setUser] = useState(null);
   const [profile, setProfile] = useState(null);
+  const [myEvents, setMyEvents] = useState([]);
 
   const logOut = () => {
     setUser(null);
@@ -62,13 +63,22 @@ const App = () => {
             <EventPage
               profile={profile}
               onEventDeleted={handleEventDeleted}
+              setMyEvents={setMyEvents}
+              myEvents={myEvents}
             />
           }
         />
         <Route path="/create-event" element={<CreateEvent />} />
         <Route path="/events/:event_id/edit" element={<EditEvent />} />
         <Route path="/registered" element={<RegisteredPage />} />
-        <Route path="/login" element={<LoginPage setProfile={setProfile} setUser={setUser}/>} />
+        <Route
+          path="/login"
+          element={<LoginPage setProfile={setProfile} setUser={setUser} />}
+        />
+        <Route
+          path="/my-events"
+          element={<MyEvents profile={profile} myEvents={myEvents} />}
+        />
       </Routes>
     </Router>
   );

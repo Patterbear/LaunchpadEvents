@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { fetchEventById, removeEventById } from "../../api";
 import loadingGif from "../assets/loading.gif";
 
-const EventPage = ({ profile, onEventDeleted }) => {
+const EventPage = ({ profile, onEventDeleted, setMyEvents, myEvents }) => {
   const { event_id } = useParams();
   const navigate = useNavigate();
   const [event, setEvent] = useState(null);
@@ -34,6 +34,7 @@ const EventPage = ({ profile, onEventDeleted }) => {
       navigate("/login");
       return;
     }
+    setMyEvents(myEvents.concat([event]));
     navigate("/registered", { state: { event } });
   };
 
