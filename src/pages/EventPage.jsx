@@ -8,6 +8,10 @@ const EventPage = ({ profile, onEventDeleted, setMyEvents, myEvents }) => {
   const navigate = useNavigate();
   const [event, setEvent] = useState(null);
   const [isLoading, setLoading] = useState(true);
+  
+  const isRegistered = event && myEvents.some((e) => e.event_id === event.event_id);
+
+
 
   useEffect(() => {
     fetchEventById(event_id)
@@ -34,8 +38,17 @@ const EventPage = ({ profile, onEventDeleted, setMyEvents, myEvents }) => {
       navigate("/login");
       return;
     }
-    setMyEvents(myEvents.concat([event]));
+
+    if (!myEvents.some((e) => e.event_id === event.event_id)) {
+      setMyEvents([...myEvents, event]);
+    }
+
     navigate("/registered", { state: { event } });
+  };
+
+  const handleUnregister = () => {
+    setMyEvents(myEvents.filter((e) => e.event_id !== event.event_id));
+    navigate("/events");
   };
 
   const handleDeleteEvent = () => {
@@ -88,9 +101,16 @@ const EventPage = ({ profile, onEventDeleted, setMyEvents, myEvents }) => {
           <i>{event.address}</i>
           <p className="event-description">{event.description}</p>
         </section>
-        <button className="register-button" onClick={handleRegister}>
-          {profile ? "Register" : "Sign in to Register"}
-        </button>
+
+        {isRegistered ? (
+          <button className="register-button" onClick={handleUnregister}>
+            Unregister
+          </button>
+        ) : (
+          <button className="register-button" onClick={handleRegister}>
+            {profile ? "Register" : "Sign in to Register"}
+          </button>
+        )}
       </section>
     </main>
   );
