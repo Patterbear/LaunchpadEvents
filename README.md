@@ -13,6 +13,10 @@
 
 ---
 
+## 🎥 Demo Video
+
+A demo video showcasing user and staff experience in the web application can be watched [**here**](https://youtu.be/gGWNqjH3SoY)
+
 ## 🌐 Live Deployment
 
 🛜 **Latest version:** Live at **[Launchpad Events](https://launchpad-events.netlify.app)**
