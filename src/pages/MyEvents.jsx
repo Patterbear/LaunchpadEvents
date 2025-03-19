@@ -12,7 +12,11 @@ const MyEvents = ({ myEvents }) => {
         <h1 className="page-title">My Events</h1>
       </header>
       <section>
-        <EventList events={myEvents} />
+        {myEvents.length > 0 ? (
+          <MyEventList events={myEvents} />
+        ) : (
+          <p>You have not registered for any events.</p>
+        )}
       </section>
     </main>
   );

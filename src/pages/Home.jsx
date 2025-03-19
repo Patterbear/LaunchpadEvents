@@ -76,7 +76,11 @@ const Home = () => {
         selectedLocation={location}
         selectedSortBy={sort_by}
       />
-      <EventList events={events} />
+      {events.length > 0 ? (
+        <EventList events={events} />
+      ) : (
+        <p>There are no events happening.</p>
+      )}
     </main>
   );
 };
