@@ -1,6 +1,6 @@
 # Launchpad Events Web App 🚀
 
-**Launchpad Events** is a dynamic **React.js** web application designed to help users seamlessly **discover** and **register for** events.
+**Launchpad Events** is a dynamic **React.js** web application designed to help users seamlessly **discover** and **register for** events
 
 ### ✨ Key Features:
 
@@ -39,8 +39,6 @@ To host this application locally, you must:
 4. Run `npm run dev` to host the application locally
 
 By default, the application runs on port 5173, so can be accessed at [**localhost:5173**](http://localhost:5173)
-
-Here’s a cleaner and more visually appealing version:
 
 ---
 
