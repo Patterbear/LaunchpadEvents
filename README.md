@@ -53,7 +53,7 @@ Here’s a cleaner and more visually appealing version:
 
 ### 👤 User
 
-✉️ **Email:** user@launchpadevents.co.uk
+✉️ **Email:** user@launchpadevents.co.uk  
 🔒 **Password:** user123
 
 ---
