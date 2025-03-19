@@ -1,4 +1,4 @@
-import EventList from "../components/EventList";
+import MyEventList from "../components/MyEventList";
 import { useEffect } from "react";
 
 const MyEvents = ({ myEvents }) => {
