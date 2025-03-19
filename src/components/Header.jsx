@@ -46,10 +46,14 @@ const Header = ({ profile, logOut }) => {
                 <button onClick={() => navigate("/my-events")}>
                   My Events
                 </button>
-                <button onClick={() => {
-                  logOut();
-                  navigate("/");
-                }}>Log Out</button>
+                <button
+                  onClick={() => {
+                    logOut();
+                    navigate("/");
+                  }}
+                >
+                  Log Out
+                </button>
               </section>
             )}
           </section>
