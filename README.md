@@ -13,9 +13,9 @@
 
 ---
 
-## 🎥 Demo Video
+## 🎥 Video Walkthrough
 
-A demo video showcasing user and staff experience in the web application can be watched [**here**](https://youtu.be/gGWNqjH3SoY)
+A video walkthrough showcasing user and staff experience in the web application can be watched [**here**](https://youtu.be/gGWNqjH3SoY)
 
 ## 🌐 Live Deployment
 
