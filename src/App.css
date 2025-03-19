@@ -60,19 +60,6 @@ button {
   z-index: 999;
 }
 
-.page-title {
-  width: 90vw;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 1rem;
-  left: 35%;
-  width: 30%;
-  height: 10%;
-  z-index: 1001;
-  background: white;
-}
-
 .search-bar input,
 .search-bar select {
   padding: 8px;
@@ -420,4 +407,17 @@ button {
   color: red;
   margin-bottom: 10px;
   font-size: 14px;
+}
+
+/* My Events Page */
+.my-event-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.page-title {
+  margin-top: 7rem;
+  margin-bottom: 0;
 }

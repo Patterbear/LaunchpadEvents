@@ -1,20 +1,21 @@
-# Launchpad Events Web App 🚀 
+# Launchpad Events Web App 🚀
 
 **Launchpad Events** is a dynamic **React.js** web application designed to help users seamlessly **discover** and **register for** events.
 
-### ✨ Key Features:  
-- **Browse & Filter Events** – Easily find events and filter by location  
+### ✨ Key Features:
+
+- **Browse & Filter Events** – Easily find events and filter by location
 - **Event Registration** – Sign up to events
 - **Google Calendar Integration** – Easily add events to **Google Calendar**
-- **Create & Manage Events** – Staff can create, edit, and delete events 
-- **Secure Authentication** – Powered by **OAuth 2.0 via Google Cloud** for a safe login experience  
-- **Responsive Design** – Seamless experience across desktop and mobile  
+- **Create & Manage Events** – Staff can create, edit, and delete events
+- **Secure Authentication** – Powered by **OAuth 2.0 via Google Cloud** for a safe login experience
+- **Responsive Design** – Seamless experience across desktop and mobile
 
----  
+---
 
-## 🌐 Live Deployment  
+## 🌐 Live Deployment
 
-🛜 **Latest version:**  Live at **[Launchpad Events](https://launchpad-events.netlify.app)**
+🛜 **Latest version:** Live at **[Launchpad Events](https://launchpad-events.netlify.app)**
 
 📡 **API:** Event data is powered by a robust backend, hosted **[here](https://launchpad-events-platform.onrender.com/api/events)**
 
@@ -35,7 +36,21 @@ To host this application locally, you must:
 
 By default, the application runs on port 5173, so can be accessed at [**localhost:5173**](http://localhost:5173)
 
+Here’s a cleaner and more visually appealing version:
 
+---
+
+## 🔑 Test Credentials
+
+### 👨‍💼 Admin
+
+✉️ **Email:** admin@launchpadevents.co.uk  
+🔒 **Password:** admin123
+
+### 👤 User
+
+✉️ **Email:** user@launchpadevents.co.uk
+🔒 **Password:** user123
 
 ---
 
