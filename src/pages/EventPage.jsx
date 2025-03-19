@@ -8,10 +8,9 @@ const EventPage = ({ profile, onEventDeleted, setMyEvents, myEvents }) => {
   const navigate = useNavigate();
   const [event, setEvent] = useState(null);
   const [isLoading, setLoading] = useState(true);
-  
-  const isRegistered = event && myEvents.some((e) => e.event_id === event.event_id);
 
-
+  const isRegistered =
+    event && myEvents.some((e) => e.event_id === event.event_id);
 
   useEffect(() => {
     fetchEventById(event_id)
@@ -21,6 +20,7 @@ const EventPage = ({ profile, onEventDeleted, setMyEvents, myEvents }) => {
       })
       .catch((error) => {
         console.error("Error fetching event:", error);
+        setEvent(null);
         setLoading(false);
       });
   }, [event_id]);
@@ -29,6 +29,15 @@ const EventPage = ({ profile, onEventDeleted, setMyEvents, myEvents }) => {
     return (
       <div className="loading-container">
         <img src={loadingGif} alt="Loading..." className="loading-gif" />
+      </div>
+    );
+  }
+
+  if (!event) {
+    return (
+      <div className="event-not-found">
+        <h2>Event Not Found</h2>
+        <button onClick={() => navigate("/")}>Go to Home</button>
       </div>
     );
   }
